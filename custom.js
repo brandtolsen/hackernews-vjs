@@ -14,48 +14,12 @@ fetch(apiUrl)
 const generateHTML = (data) => {
     console.log(data)
     const html = `
-        <h1 class="hn-title"><a href="${data.url}" target="_blank">${data.title}</a></h1>
-        <p class="hn-author">${data.by}</p>
-        <p class="hn-score">${data.score}</p>
+        <p class="hn-author">By ${data.by}</p>
         <p class="hn-timestamp">${data.time}</p>
+        <h1 class="hn-title"><a href="${data.url}" target="_blank">${data.title}</a></h1>
+        <p class="hn-score"><svg class="poly" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 0L17.6603 15H0.339746L9 0Z" fill="white"/></svg>
+         ${data.score}</p>
     `
     const hackernewsDiv = document.querySelector('.hn-container')
     hackernewsDiv.innerHTML = html
 }
-
-
-
-// axios
-// .get("https://api.hnpwa.com/v0/newest/1.json")
-// .then(function (response) {
-//     createListItem(response);
-// })
-// .catch(function (error) {
-//     console.log(error);
-// });
-
-// // Create list item
-// // Add to DOM
-
-// function createListItem (response) {
-//     response.data.forEach(function(listItem){
-//         // Create list item
-//         var li = document.createElement("li");
-//         li.setAttribute("class", "list-group-item");
-
-//         // Create point badge
-//         var span = document.createElement("span");
-//         span.setAttribute("class", "badge badge-primary");
-//         span.innerHTML = listItem.points;
-
-//         var anchor = document.createElement("a");
-//         anchor.setAttribute("href", listItem.url);
-//         anchor.setAttribute("target", "_blank");
-//         anchor.innerHTML = listItem.title;
-//         anchor.prepend(span);
-
-//         li.appendChild(anchor);
-
-//         document.querySelector(".list-group").appendChild(li);
-//         });
-// }

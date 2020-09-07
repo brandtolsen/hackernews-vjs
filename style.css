@@ -1,0 +1,50 @@
+.col-sm.item {
+    background: #5AC8FA;
+    box-shadow: 0px -2px 44px rgba(0, 0, 0, 0.0709352);
+    border-radius: 6px;
+    margin: 1rem;
+    padding: 1rem;
+}
+.hn-title {
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 2rem;
+}
+.hn-title a {
+    color: #fff;
+}
+.hn-author {
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #fff;
+    margin: 0;
+}
+.hn-timestamp {
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
+    opacity: 0.7;
+    margin: 0;
+}
+.hn-score {
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #FFFFFF;
+    margin: 0;
+}
+svg.poly {
+    margin-right: .5rem;
+    vertical-align: unset;
+}
