@@ -11,10 +11,10 @@
     font-size: 18px;
     line-height: 22px;
     margin-top: 2rem;
-}
-.hn-title a {
     color: #fff;
+    display: block;
 }
+
 .hn-author {
     font-family: SF Pro Display;
     font-style: normal;

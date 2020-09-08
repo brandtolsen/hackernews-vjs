@@ -26,9 +26,10 @@
 
 
 
-var apiTopStories = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+var apiTopStories = "https://hacker-news.firebaseio.com/v0/topstories.json";
 var contentBox = document.querySelector("#contentBox");
 var stories = [];
+var users = [];
 var storyList = document.querySelector("#storyList");
 
 var app = {
@@ -39,16 +40,19 @@ var app = {
     fetch(apiTopStories)
       .then(response => response.json())
       .then(data => {
-        var store = data.slice(0,10); // trim to top 10 stories
+        var store = data.slice(0,10); // show top 10 stories
         store.forEach((item) => {
           app.fetchOneStory(item);
         })
+        store.forEach((user) => {
+          app.fetchOneUser(user);
+        })
       })
-    setTimeout(app.finish, 2000); // delay 3 sec, then print all stories
-    setTimeout(app.render, 2000);
+    setTimeout(app.finish, 1000);
+    setTimeout(app.render, 1000);
   },
   fetchOneStory: (id) => {
-    var target = "https://hacker-news.firebaseio.com/v0/item/" + id + ".json?print=pretty";
+    var target = "https://hacker-news.firebaseio.com/v0/item/" + id + ".json";
     fetch(target)
       .then(response => response.json())
       .then(data => {
@@ -61,23 +65,58 @@ var app = {
         });
       })
   },
+  fetchOneUser: (id) => {
+    var target = "https://hacker-news.firebaseio.com/v0/user/" + id + ".json";
+    fetch(target)
+      .then(response => response.json())
+      .then(data => {
+        users.push({
+          karma: data.karma
+        });
+      })
+  },
   render: () => {
     stories.forEach((story) => {
+      // Adding card
       var card = document.createElement("div")
       card.className = "col-md-4 my-3";
+      storyList.appendChild(card);
+      // Adding inner card
       var inner = document.createElement("div")
       inner.className = "col-md-12 h-100 item";
+      card.appendChild(inner);
+      // Adding author
+      var author = document.createElement("p")
+      author.className = "hn-author";
+      author.textContent = story.by;
+      inner.appendChild(author);
+      // Adding story timestamp
+      var timestamp = document.createElement("p")
+      timestamp.className = "hn-timestamp";
+      timestamp.textContent = story.time;
+      inner.appendChild(timestamp);
+      // Adding story title with URL
       var link = document.createElement("a");
-      link.href = story.url;      
+      link.className = "hn-title";
+      link.href = story.url;
       link.textContent = story.title;
       link.target= "_blank";
       inner.appendChild(link);
-      storyList.appendChild(card);
-      card.appendChild(inner);
+      // Adding story score
+      var score = document.createElement("p")
+      score.className = "hn-score";
+      score.textContent = story.score;
+      inner.appendChild(score);
+      // Adding karma score
+      var karma = document.createElement("p")
+      karma.className = "hn-score";
+      karma.textContent = story.karma;
+      inner.appendChild(karma);
     })
   },
   finish: () => {
     console.log("Top stories", stories);
+    console.log("users", users);
   }
 }
 
