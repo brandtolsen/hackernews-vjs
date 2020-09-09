@@ -1,31 +1,3 @@
-// const apiData = {
-//     url: 'https://hacker-news.firebaseio.com/v0/',
-//     type: 'item',
-//     id: '24382722',
-// }
-
-// const {url, type, id} = apiData
-// const apiUrl = `${url}${type}/${id}.json`
-
-// fetch(apiUrl)
-//     .then( (data) => data.json())
-//     .then( (hackernews) => generateHTML(hackernews))
-
-// const generateHTML = (data) => {
-//     console.log(data)
-//     const html = `
-//         <p class="hn-author">By ${data.by}</p>
-//         <p class="hn-timestamp">${data.time}</p>
-//         <h1 class="hn-title"><a href="${data.url}" target="_blank">${data.title}</a></h1>
-//         <p class="hn-score"><svg class="poly" width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 0L17.6603 15H0.339746L9 0Z" fill="white"/></svg>
-//          ${data.score}</p>
-//     `
-//     const hackernewsDiv = document.querySelector('.hn-container')
-//     hackernewsDiv.innerHTML = html
-// }
-
-
-
 var apiTopStories = "https://hacker-news.firebaseio.com/v0/topstories.json";
 var contentBox = document.querySelector("#contentBox");
 var stories = [];
@@ -71,7 +43,7 @@ var app = {
       .then(response => response.json())
       .then(data => {
         users.push({
-          karma: data.karma
+
         });
       })
   },
@@ -86,10 +58,10 @@ var app = {
       inner.className = "col-md-12 h-100 item";
       card.appendChild(inner);
       // Adding author
-      var author = document.createElement("p")
-      author.className = "hn-author";
-      author.textContent = story.by;
-      inner.appendChild(author);
+      var authors = document.createElement("p")
+      authors.className = "hn-author";
+      authors.textContent = story.author;
+      inner.appendChild(authors);
       // Adding story timestamp
       var timestamp = document.createElement("p")
       timestamp.className = "hn-timestamp";
@@ -107,11 +79,6 @@ var app = {
       score.className = "hn-score";
       score.textContent = story.score;
       inner.appendChild(score);
-      // Adding karma score
-      var karma = document.createElement("p")
-      karma.className = "hn-score";
-      karma.textContent = story.karma;
-      inner.appendChild(karma);
     })
   },
   finish: () => {

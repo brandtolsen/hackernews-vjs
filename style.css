@@ -14,7 +14,6 @@
     color: #fff;
     display: block;
 }
-
 .hn-author {
     font-family: SF Pro Display;
     font-style: normal;
@@ -42,8 +41,4 @@
     line-height: 18px;
     color: #FFFFFF;
     margin: 0;
-}
-svg.poly {
-    margin-right: .5rem;
-    vertical-align: unset;
 }
