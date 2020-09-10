@@ -12,7 +12,8 @@ var app = {
     fetch(apiTopStories)
       .then(response => response.json())
       .then(data => {
-        var store = data.slice(0,10); // show top 10 stories
+        // show top 10 stories
+        var store = data.slice(0,10);
         store.forEach((item) => {
           app.fetchOneStory(item);
         })
@@ -24,8 +25,8 @@ var app = {
     setTimeout(app.render, 1000);
   },
   fetchOneStory: (id) => {
-    var target = "https://hacker-news.firebaseio.com/v0/item/" + id + ".json";
-    fetch(target)
+    var target1 = "https://hacker-news.firebaseio.com/v0/item/" + id + ".json";
+    fetch(target1)
       .then(response => response.json())
       .then(data => {
         stories.push({
@@ -38,12 +39,12 @@ var app = {
       })
   },
   fetchOneUser: (id) => {
-    var target = "https://hacker-news.firebaseio.com/v0/user/" + id + ".json";
-    fetch(target)
+    var target2 = "https://hacker-news.firebaseio.com/v0/user/" + "id" + ".json";
+    fetch(target2)
       .then(response => response.json())
       .then(data => {
         users.push({
-
+          karma: data.karma
         });
       })
   },
@@ -60,7 +61,7 @@ var app = {
       // Adding author
       var authors = document.createElement("p")
       authors.className = "hn-author";
-      authors.textContent = story.author;
+      authors.textContent = "By " + story.author;
       inner.appendChild(authors);
       // Adding story timestamp
       let unix_timestamp = story.time
@@ -71,7 +72,7 @@ var app = {
       var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
       var timestamp = document.createElement("p")
       timestamp.className = "hn-timestamp";
-      timestamp.textContent = formattedTime;
+      timestamp.textContent = "Published " + formattedTime;
       inner.appendChild(timestamp);
       // Adding story title with URL
       var link = document.createElement("a");
@@ -83,8 +84,13 @@ var app = {
       // Adding story score
       var score = document.createElement("p")
       score.className = "hn-score";
-      score.textContent = story.score;
+      score.textContent = "▲ " + story.score;
       inner.appendChild(score);
+      // // Adding karma score
+      // var karma = document.createElement("p")
+      // karma.className = "hn-karma";
+      // karma.textContent = story.karma;
+      // inner.appendChild(karma);
     })
   },
   finish: () => {
