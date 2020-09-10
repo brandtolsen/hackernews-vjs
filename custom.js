@@ -17,9 +17,9 @@ var app = {
         store.forEach((item) => {
           app.fetchOneStory(item);
         })
-        store.forEach((user) => {
-          app.fetchOneUser(user);
-        })
+        // store.forEach((by) => {
+        //   app.fetchOneUser(by);
+        // })
       })
     setTimeout(app.finish, 1000);
     setTimeout(app.render, 1000);
@@ -38,16 +38,16 @@ var app = {
         });
       })
   },
-  fetchOneUser: (id) => {
-    var target2 = "https://hacker-news.firebaseio.com/v0/user/" + "id" + ".json";
-    fetch(target2)
-      .then(response => response.json())
-      .then(data => {
-        users.push({
-          karma: data.karma
-        });
-      })
-  },
+  // fetchOneUser: (id) => {
+  //   var target2 = "https://hacker-news.firebaseio.com/v0/user/" + "id" + ".json";
+  //   fetch(target2)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       users.push({
+  //         karma: data.karma
+  //       });
+  //     })
+  // },
   render: () => {
     stories.forEach((story) => {
       // Adding card
@@ -86,7 +86,7 @@ var app = {
       score.className = "hn-score";
       score.textContent = "▲ " + story.score;
       inner.appendChild(score);
-      // // Adding karma score
+      // Adding karma score
       // var karma = document.createElement("p")
       // karma.className = "hn-karma";
       // karma.textContent = story.karma;
@@ -95,7 +95,7 @@ var app = {
   },
   finish: () => {
     console.log("Top stories", stories);
-    console.log("users", users);
+    // console.log("users", users);
   }
 }
 
