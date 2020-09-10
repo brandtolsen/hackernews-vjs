@@ -2,6 +2,8 @@
 
 This web project displays 10 randomized Hacker News top stories using the Hacker News API (https://github.com/HackerNews/API).
 
+Demo: https://hackernews-vjs.vercel.app/
+
 The UI is responsive using bootstrap and includes:
 * Story title
 * Story URL
