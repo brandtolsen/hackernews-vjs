@@ -1,5 +1,8 @@
 .item {
-    background: #5AC8FA;
+    background-image: url(./shapes.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0px -2px 44px rgba(0, 0, 0, 0.0709352);
     border-radius: 6px;
     padding: 1rem;

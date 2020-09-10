@@ -63,9 +63,15 @@ var app = {
       authors.textContent = story.author;
       inner.appendChild(authors);
       // Adding story timestamp
+      let unix_timestamp = story.time
+      var date = new Date(unix_timestamp * 1000);
+      var hours = date.getHours();
+      var minutes = "0" + date.getMinutes();
+      var seconds = "0" + date.getSeconds();
+      var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
       var timestamp = document.createElement("p")
       timestamp.className = "hn-timestamp";
-      timestamp.textContent = story.time;
+      timestamp.textContent = formattedTime;
       inner.appendChild(timestamp);
       // Adding story title with URL
       var link = document.createElement("a");
